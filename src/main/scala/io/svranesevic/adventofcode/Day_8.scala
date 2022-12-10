@@ -6,7 +6,7 @@ object Day_8 extends App {
 
   val trees =
     Source
-      .fromFile("./8.txt")
+      .fromFile("./input/day_8.txt")
       .getLines()
       .map(_.split("").flatMap(_.toIntOption).toVector)
       .toVector
@@ -16,8 +16,8 @@ object Day_8 extends App {
   val partOne = forest.numVisibleTrees
   val partTwo = forest.highestScenicScore
 
-  println(s"Part 1 - $partOne")
-  println(s"Part 2 - $partTwo")
+  println(s"Part 1: $partOne")
+  println(s"Part 2: $partTwo")
 }
 
 case class Forest(private val trees: Vector[Vector[Int]]) extends AnyVal {

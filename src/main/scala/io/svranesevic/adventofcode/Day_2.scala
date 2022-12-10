@@ -5,7 +5,7 @@ import scala.io.Source
 object Day_2 extends App {
   val score_1 =
     Source
-      .fromFile("./2.txt")
+      .fromFile("./input/day_2.txt")
       .getLines()
       .map(_.split(" ").flatMap(Shape.fromString))
       .foldLeft(0L) { case (score, shapes) =>
@@ -16,7 +16,7 @@ object Day_2 extends App {
 
   val score_2 =
     Source
-      .fromFile("./2.txt")
+      .fromFile("./input/day_2.txt")
       .getLines()
       .flatMap { line =>
         val opponentAndOutcome = line.split(" ")
@@ -36,8 +36,8 @@ object Day_2 extends App {
         score + me.score(opponent)
       }
 
-  println(s"Score 1: $score_1")
-  println(s"Score 2: $score_2")
+  println(s"Part 1: $score_1")
+  println(s"Part 2: $score_2")
 }
 
 sealed trait Outcome

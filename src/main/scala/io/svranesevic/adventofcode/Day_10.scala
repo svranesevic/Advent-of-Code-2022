@@ -5,7 +5,7 @@ import scala.io.Source
 object Day_10 extends App {
   val cpu =
     Source
-      .fromFile("./10.txt")
+      .fromFile("./input/day_10.txt")
       .getLines()
       .foldLeft(Cpu()) {
         case (cpu, s"addx $x") => cpu.addX(x.toInt)

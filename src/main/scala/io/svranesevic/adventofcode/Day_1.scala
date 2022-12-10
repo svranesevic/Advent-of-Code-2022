@@ -8,7 +8,7 @@ object Day_1 extends App {
   var maxHeap = PriorityQueue.empty[Long]
 
   Source
-    .fromFile("./1.txt")
+    .fromFile("./input/day_1.txt")
     .getLines()
     .mkString("\n")
     .split("\n\n")

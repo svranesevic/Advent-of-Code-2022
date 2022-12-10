@@ -7,21 +7,21 @@ object Day_5 extends App {
   val stacks =
     Stacks.from(
       Map(
-        1 -> Vector('G', 'T', 'R', 'W'),
-        2 -> Vector('G', 'C', 'H', 'P', 'M', 'S', 'V', 'W'),
-        3 -> Vector('C', 'L', 'T', 'S', 'G', 'M'),
-        4 -> Vector('J', 'H', 'D', 'M', 'W', 'R', 'F'),
-        5 -> Vector('P', 'Q', 'L', 'H', 'S', 'W', 'F', 'J'),
-        6 -> Vector('P', 'J', 'D', 'N', 'F', 'M', 'S'),
-        7 -> Vector('Z', 'B', 'D', 'F', 'G', 'C', 'S', 'J'),
-        8 -> Vector('R', 'T', 'B'),
-        9 -> Vector('H', 'N', 'W', 'L', 'C')
+        1 -> "GTRW",
+        2 -> "GCHPMSVW",
+        3 -> "CLTSGM",
+        4 -> "JHDMWRF",
+        5 -> "PQLHSWFJ",
+        6 -> "PJDNFMS",
+        7 -> "ZBDFGCSJ",
+        8 -> "RTB",
+        9 -> "HNWLC"
       )
     )
 
   val partOne =
     Source
-      .fromFile("./5.txt")
+      .fromFile("./input/day_5.txt")
       .getLines()
       .flatMap(MoveAction.fromString)
       .foldLeft(stacks) { case (stacks, action) =>
@@ -31,7 +31,7 @@ object Day_5 extends App {
 
   val partTwo =
     Source
-      .fromFile("./5.txt")
+      .fromFile("./input/day_5.txt")
       .getLines()
       .flatMap(MoveAction.fromString)
       .foldLeft(stacks) { case (stacks, action) =>
@@ -39,8 +39,8 @@ object Day_5 extends App {
       }
       .topline
 
-  println(s"Part one: $partOne")
-  println(s"Part two: $partTwo")
+  println(s"Part 1: $partOne")
+  println(s"Part 2: $partTwo")
 }
 
 final case class Stacks(private val under: Map[Int, Vector[Char]]) extends AnyVal {
@@ -92,17 +92,26 @@ object CrateMover9001 {
 
 object Stacks {
 
-  def from(map: Map[Int, Vector[Char]]) = Stacks(map)
+  def from(map: Map[Int, String]): Stacks = {
+    val stacks =
+      map.map { case (stack, crates) => stack -> crates.toVector }
+    Stacks(stacks)
+  }
 }
 
 case class MoveAction(from: Int, to: Int, numCrates: Int)
 object MoveAction {
+
   def fromString(moveActionStr: String): Option[MoveAction] = {
-    val split = moveActionStr.split(" ").toList
-    for {
-      numCrates <- split.drop(1).headOption.flatMap(_.toIntOption)
-      from <- split.drop(3).headOption.flatMap(_.toIntOption)
-      to <- split.drop(5).headOption.flatMap(_.toIntOption)
-    } yield MoveAction(from, to, numCrates)
+    moveActionStr match {
+      case s"move $numCratesStr from $fromStr to $toStr" =>
+        for {
+          numCrates <- numCratesStr.toIntOption
+          from <- fromStr.toIntOption
+          to <- toStr.toIntOption
+        } yield MoveAction(from, to, numCrates)
+
+      case _ => None
+    }
   }
 }

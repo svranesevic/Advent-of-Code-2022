@@ -6,7 +6,7 @@ object Day_3 extends App {
 
   val partOne =
     Source
-      .fromFile("./3.txt")
+      .fromFile("./input/day_3.txt")
       .getLines()
       .map(_.toCharArray())
       .map { items =>
@@ -19,7 +19,7 @@ object Day_3 extends App {
 
   val partTwo =
     Source
-      .fromFile("./3.txt")
+      .fromFile("./input/day_3.txt")
       .getLines()
       .map(_.toCharArray())
       .grouped(3)
@@ -34,6 +34,6 @@ object Day_3 extends App {
     else if (item >= 'A' && item <= 'Z') Some(item.toInt - 38)
     else None
 
-  println(s"Part 1 - Sum of common items' priorities: $partOne")
-  println(s"Part 2 - Sum of badges' priorities: $partTwo")
+  println(s"Part 1: $partOne")
+  println(s"Part 2: $partTwo")
 }

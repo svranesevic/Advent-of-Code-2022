@@ -11,7 +11,7 @@ object Day_7 extends App {
 
   val fs =
     Source
-      .fromFile("./7.txt")
+      .fromFile("./input/day_7.txt")
       .getLines()
       .foldLeft(Dir(name = "/")) {
         case (fs, cd("/"))    => fs.root
@@ -32,8 +32,8 @@ object Day_7 extends App {
   val missingSpace = updateSize - unusedSpace
   val Some(partTwo) = fs.root.dirSizes.sorted.find(_ >= missingSpace)
 
-  println(s"Part one - $partOne")
-  println(s"Part two - $partTwo")
+  println(s"Part 1: $partOne")
+  println(s"Part 2: $partTwo")
 }
 
 case class Dir(

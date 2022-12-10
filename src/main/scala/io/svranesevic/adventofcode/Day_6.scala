@@ -6,7 +6,7 @@ object Day_6 extends App {
 
   val dataStream =
     Source
-      .fromFile("./6.txt")
+      .fromFile("./input/day_6.txt")
       .mkString
       .toCharArray()
 
@@ -20,8 +20,8 @@ object Day_6 extends App {
       isMarker(dataStream, atIndex = index, markerLength = 14)
     }
 
-  println(s"Part one: $partOne")
-  println(s"Part two: $partTwo")
+  println(s"Part 1: $partOne")
+  println(s"Part 2: $partTwo")
 
   def isMarker(dataStream: Array[Char], atIndex: Int, markerLength: Int): Boolean = {
     val potentialMarker = dataStream.slice(atIndex - markerLength, atIndex)

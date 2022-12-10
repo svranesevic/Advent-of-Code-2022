@@ -6,9 +6,9 @@ object Day_9 extends App {
 
   val rope =
     Source
-      .fromFile("./9.txt")
+      .fromFile("./input/day_9.txt")
       .getLines()
-      .foldLeft(Rope(Point(0, 0))) {
+      .foldLeft(Rope()) {
         case (rope, s"U $steps") => rope.up(steps.toInt)
         case (rope, s"D $steps") => rope.down(steps.toInt)
         case (rope, s"R $steps") => rope.right(steps.toInt)
@@ -19,8 +19,9 @@ object Day_9 extends App {
   val partOne = rope.tail.headPositions.distinct.size
   val partTwo = rope.knot(9).headPositions.distinct.size
 
-  println(s"Part 1 - $partOne")
-  println(s"Part 2 - $partTwo")
+  println(s"Part 1: $partOne")
+  println(s"Part 2: $partTwo")
+
 }
 
 case class Point(x: Int, y: Int) {

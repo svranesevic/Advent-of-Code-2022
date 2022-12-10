@@ -6,7 +6,7 @@ object Day_4 extends App {
 
   val partOne =
     Source
-      .fromFile("./4.txt")
+      .fromFile("./input/day_4.txt")
       .getLines()
       .map(_.split(","))
       .count { sectionAssignments =>
@@ -27,7 +27,7 @@ object Day_4 extends App {
 
   val partTwo =
     Source
-      .fromFile("./4.txt")
+      .fromFile("./input/day_4.txt")
       .getLines()
       .map(_.split(","))
       .count { sectionAssignments =>
@@ -47,6 +47,6 @@ object Day_4 extends App {
         secondElfSections.contains(firstElfSections.min) || secondElfSections.contains(firstElfSections.max)
       }
 
-  println(s"Part one: $partOne")
-  println(s"Part two: $partTwo")
+  println(s"Part 1: - $partOne")
+  println(s"Part 2: - $partTwo")
 }
